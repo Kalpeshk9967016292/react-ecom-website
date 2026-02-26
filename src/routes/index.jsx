@@ -1,11 +1,9 @@
-import { Outlet, useMatches } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { Header, TopHeader, TopSearch, PageHeader, Footer } from "../components/layout";
+import usePageTitle from "../hooks/usePageTitle";
 
 function AppRoutes({ withPageHeader = false }) {
-  const matches = useMatches();
-  console.log("route matches", matches);
-  const currentMatch = matches[matches.length - 1];
-  const title = currentMatch?.handle?.title ?? currentMatch?.route?.title;
+  const title = usePageTitle();
 
   return (
     <>

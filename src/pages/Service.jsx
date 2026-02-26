@@ -1,4 +1,4 @@
-import OurTeam from "../components/common/OurTeam";
+import { OurTeam } from "../components/common";
 
 export default function Service() {
   return (

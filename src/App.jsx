@@ -1,31 +1,18 @@
-<<<<<<< Updated upstream
-import { createBrowserRouter, RouterProvider } from "react-router";
-import {
-  AppRoutesWithoutHeader,
-  AppRoutesWithHeader,
-} from "./routes/AppRoutes";
-=======
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import AppRoutes from "./routes/AppRoutes";
->>>>>>> Stashed changes
+import AppRoutes from "./routes";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Service from "./pages/Service";
 import Contact from "./pages/Contact";
-import Login from "./components/common/Login";
+import { Login } from "./components/common";
 import Account from "./pages/Account";
 
 const router = createBrowserRouter([
   {
-<<<<<<< Updated upstream
-    element: <AppRoutesWithoutHeader />,
-    children: [{ path: "/", element: <Home />, title: "Home" }],
-=======
     element: <AppRoutes />,
     children: [
       { path: "/", element: <Home />, title: "Home", handle: { title: "Home" } },
     ],
->>>>>>> Stashed changes
   },
   {
     element: <AppRoutes withPageHeader />,
@@ -34,26 +21,31 @@ const router = createBrowserRouter([
         path: "/about",
         element: <About />,
         title: "About Us",
+        handle: { title: "About Us" },
       },
       {
-        path: "/Service",
+        path: "/service",
         element: <Service />,
         title: "Services",
+        handle: { title: "Services" },
       },
       {
         path: "/contact-us",
         element: <Contact />,
         title: "Contact Us",
+        handle: { title: "Contact Us" },
       },
       {
         path: "/account",
         element: <Account />,
         title: "Account",
+        handle: { title: "Account" },
         children: [
           {
-            path: "/account/login",
+            path: "login",
             element: <Login />,
             title: "Login",
+            handle: { title: "Login" },
           },
         ],
       },

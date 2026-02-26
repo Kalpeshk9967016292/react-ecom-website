@@ -4,27 +4,34 @@ export default function Login() {
   const loginForm = async (prevData, formData) => {
     const name = formData.get("userName");
     const password = formData.get("password");
-    if (name.length > 5) {
-      return { name, password };
-    } else if (password) {
-      console.log(password);
-      return { name, password };
-    } else {
+
+    if (!name || !password) {
       return { message: "enter User name and password", name, password };
     }
 
-    const response = await fetch(
-      "https://www.iamtiksha.com/apis/store/public/api/v1/login",
-      {
-        method: "POST",
-        body: JSON.stringify({
-          name: name,
-          password: password,
-        }),
-      },
-    );
-    const result = await response.json();
-    console.log(result);
+    if (name.length <= 5) {
+      return { message: "user name must be longer than 5 characters", name, password };
+    }
+
+    try {
+      const response = await fetch(
+        "https://www.iamtiksha.com/apis/store/public/api/v1/login",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name,
+            password,
+          }),
+        },
+      );
+      const result = await response.json();
+      console.log(result);
+      return result;
+    } catch (err) {
+      console.error(err);
+      return { message: "network error", error: err };
+    }
   };
   const [data, action, pending] = useActionState(loginForm);
   console.log(data);
