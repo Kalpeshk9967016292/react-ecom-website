@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import {
   AppRoutesWithoutHeader,
   AppRoutesWithHeader,
@@ -13,7 +13,9 @@ import Account from "./pages/Account";
 const router = createBrowserRouter([
   {
     element: <AppRoutesWithoutHeader />,
-    children: [{ path: "/", element: <Home />, title: "Home" }],
+    children: [
+      { path: "/", element: <Home />, title: "Home", handle: { title: "Home" } },
+    ],
   },
   {
     element: <AppRoutesWithHeader />,
@@ -22,26 +24,31 @@ const router = createBrowserRouter([
         path: "/about",
         element: <About />,
         title: "About Us",
+        handle: { title: "About Us" },
       },
       {
-        path: "/Service",
+        path: "/service",
         element: <Service />,
         title: "Services",
+        handle: { title: "Services" },
       },
       {
         path: "/contact-us",
         element: <Contact />,
         title: "Contact Us",
+        handle: { title: "Contact Us" },
       },
       {
         path: "/account",
         element: <Account />,
         title: "Account",
+        handle: { title: "Account" },
         children: [
           {
-            path: "/account/login",
+            path: "login",
             element: <Login />,
             title: "Login",
+            handle: { title: "Login" },
           },
         ],
       },

@@ -1,8 +1,7 @@
-import { Outlet } from "react-router";
+import { Outlet, useMatches } from "react-router-dom";
 import PageHeader from "../components/layout/Header/PageHeader";
 import { Header, TopHeader, TopSearch } from "../components/layout/Header";
 import Footer from "../components/layout/Footer/Footer";
-import { useMatches } from "react";
 
 function AppRoutesWithoutHeader() {
   return (
@@ -21,7 +20,7 @@ function AppRoutesWithHeader() {
   // Get the last matched route
   const currentMatch = matches[matches.length - 1];
 
-  const title = currentMatch?.route?.title;
+  const title = currentMatch?.handle?.title ?? currentMatch?.route?.title;
 
   return (
     <>
