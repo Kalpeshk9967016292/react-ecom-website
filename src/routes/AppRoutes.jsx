@@ -4,35 +4,26 @@ import { Header, TopHeader, TopSearch } from "../components/layout/Header";
 import Footer from "../components/layout/Footer/Footer";
 import { useMatches } from "react";
 
-function AppRoutesWithoutHeader() {
-  return (
-    <>
-      <TopHeader />
-      <Header />
-      <TopSearch />
-      <Outlet />
-      <Footer />
-    </>
-  );
-}
-
-function AppRoutesWithHeader() {
+function AppRoutes({ withPageHeader = false }) {
   const matches = useMatches();
-  // Get the last matched route
   const currentMatch = matches[matches.length - 1];
+<<<<<<< Updated upstream
 
   const title = currentMatch?.route?.title;
+=======
+  const title = currentMatch?.handle?.title ?? currentMatch?.route?.title;
+>>>>>>> Stashed changes
 
   return (
     <>
       <TopHeader />
       <Header />
       <TopSearch />
-      <PageHeader title={title} />
+      {withPageHeader && <PageHeader title={title} />}
       <Outlet />
       <Footer />
     </>
   );
 }
 
-export { AppRoutesWithoutHeader, AppRoutesWithHeader };
+export default AppRoutes;
